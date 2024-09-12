@@ -23,21 +23,21 @@ from opencensus.ext.flask.flask_middleware import FlaskMiddleware
 
 # Logging
 logger = logging.getLogger(__name__)# TODO: Setup logger
-logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/'))
-logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/'))
+logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=b1784c9d-65f4-4eda-ad57-0645b641e28a'))
+logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=b1784c9d-65f4-4eda-ad57-0645b641e28a'))
 logger.setLevel(logging.INFO)
 
 # Metrics
 exporter = metrics_exporter.new_metrics_exporter(
   enable_standard_metrics=True,
-  connection_string='InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/')
+  connection_string='InstrumentationKey=b1784c9d-65f4-4eda-ad57-0645b641e28a')
 # TODO: Setup exporter
 
 
 # Tracing
 tracer = Tracer(
     exporter=AzureExporter(
-        connection_string='InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/'),
+        connection_string='InstrumentationKey=b1784c9d-65f4-4eda-ad57-0645b641e28a'),
     sampler=ProbabilitySampler(1.0),
 )
 # TODO: Setup tracer
@@ -47,7 +47,7 @@ app = Flask(__name__)
 # Requests
 middleware = FlaskMiddleware(
     app,
-    exporter=AzureExporter(connection_string="InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/"),
+    exporter=AzureExporter(connection_string="InstrumentationKey=b1784c9d-65f4-4eda-ad57-0645b641e28a"),
     sampler=ProbabilitySampler(rate=1.0),
 )
 
