@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-resourceGroup="finalcourse"
+resourceGroup="finalproject"
 location="eastasia"
 osType="Ubuntu2204"
 vmssName="udacity-vmss"
