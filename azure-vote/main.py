@@ -23,21 +23,21 @@ from opencensus.ext.flask.flask_middleware import FlaskMiddleware
 
 # Logging
 logger = logging.getLogger(__name__)# TODO: Setup logger
-logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=f2db39b6-4cd7-4e3f-9738-e9e3aaeb5cff;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/'))
-logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=f2db39b6-4cd7-4e3f-9738-e9e3aaeb5cff;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/'))
+logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/'))
+logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/'))
 
 
 # Metrics
 exporter = metrics_exporter.new_metrics_exporter(
   enable_standard_metrics=True,
-  connection_string='InstrumentationKey=f2db39b6-4cd7-4e3f-9738-e9e3aaeb5cff;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/')
+  connection_string='InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/')
 # TODO: Setup exporter
 
 
 # Tracing
 tracer = Tracer(
     exporter=AzureExporter(
-        connection_string='InstrumentationKey=f2db39b6-4cd7-4e3f-9738-e9e3aaeb5cff;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/'),
+        connection_string='InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/'),
     sampler=ProbabilitySampler(1.0),
 )
 # TODO: Setup tracer
@@ -47,7 +47,7 @@ app = Flask(__name__)
 # Requests
 middleware = FlaskMiddleware(
     app,
-    exporter=AzureExporter(connection_string="InstrumentationKey=f2db39b6-4cd7-4e3f-9738-e9e3aaeb5cff;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/"),
+    exporter=AzureExporter(connection_string="InstrumentationKey=a7a7445b-7bd5-4e04-ba3c-b7ec91ed2da2;IngestionEndpoint=https://eastasia-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastasia.livediagnostics.monitor.azure.com/"),
     sampler=ProbabilitySampler(rate=1.0),
 )
 
