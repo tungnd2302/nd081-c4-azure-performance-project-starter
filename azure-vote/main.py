@@ -71,7 +71,7 @@ else:
 
 # Redis Connection
 # r = redis.Redis()
-
+redis_server = os.environ['REDIS']
 try:
     if "REDIS_PWD" in os.environ:
         r = redis.StrictRedis(host=redis_server,
